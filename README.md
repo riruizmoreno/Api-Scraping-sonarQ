@@ -29,6 +29,23 @@ Los endpoints y parámetros pueden variar por versión, permisos y edición. La 
 
 ## Validación local
 
+Instale Ruff para desarrollo:
+
+```powershell
+python -m pip install -r requirements-dev.txt
+```
+
+Ejecute el análisis estático:
+
+```powershell
+python -m ruff check .
+```
+
+La configuración de Ruff está en `pyproject.toml`. GitHub Actions ejecuta Ruff y
+las pruebas unitarias en cada push y pull request.
+
+Para comprobar la aplicación y sus pruebas:
+
 ```powershell
 python -m unittest discover -s tests -v
 ```

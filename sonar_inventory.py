@@ -11,11 +11,11 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable
-
+from typing import Any
 
 LOGGER = logging.getLogger("sonar_inventory")
 PAGE_SIZE = 500
@@ -41,7 +41,7 @@ class Config:
     log_level: str
 
     @classmethod
-    def from_env(cls) -> "Config":
+    def from_env(cls) -> Config:
         url = os.getenv("SONAR_URL", "").strip().rstrip("/")
         token = os.getenv("SONAR_TOKEN", "").strip()
         if not url:
@@ -509,7 +509,7 @@ class Inventory:
 
         return {
             "schema_version": "1.0",
-            "extracted_at_utc": datetime.now(timezone.utc).isoformat(),
+            "extracted_at_utc": datetime.now(UTC).isoformat(),
             "source": "SonarQube Server Web API",
             "read_only": True,
             "instance": instance,

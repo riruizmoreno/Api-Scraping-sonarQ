@@ -1,7 +1,7 @@
 import unittest
-
-from sonar_inventory import Inventory, SonarClient, Config
 from pathlib import Path
+
+from sonar_inventory import Config, Inventory, SonarClient
 
 
 class ProfileComparisonTests(unittest.TestCase):
