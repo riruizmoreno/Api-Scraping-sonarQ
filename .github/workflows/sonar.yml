@@ -1,3 +1,4 @@
+# Sonar workflow configuration.
 name: Laboratorio-Sonarqube
 
 on:
